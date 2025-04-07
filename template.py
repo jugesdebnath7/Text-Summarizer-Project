@@ -45,4 +45,4 @@ for file_path in list_of_files:
             pass
         logging.info(f"Creating file: {file_path}")
     else:
-        logging.info(f"File aready exists:{file_path}")
+        logging.info(f"File already exists:{file_path}")
