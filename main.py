@@ -15,12 +15,14 @@ import sys
 import os
 sys.path.append(os.path.abspath("src"))
 from textSummarizer.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
+from textSummarizer.pipeline.stage_02_data_validation import DataValidationTrainingPipeline
 from textSummarizer.logging import logger
-
-STAGE_NAME = "Data Ingestion stage"  
+ 
 
 if __name__ == "__main__":
+
     # Call the main function of the DataIngestionTrainingPipeline class to execute the stage
+    STAGE_NAME = "Data Ingestion stage"
     try:
         logger.info(f"\n\n===================== Stage {STAGE_NAME} started =====================")
         data_ingestion_pipeline = DataIngestionTrainingPipeline()
@@ -29,4 +31,15 @@ if __name__ == "__main__":
     except Exception as e:
         logger.exception(f"An error occurred in the {STAGE_NAME}: {e}")
         raise e    
-    
+
+
+    # Call the main function of the DataIngestionTrainingPipeline class to execute the stage
+    STAGE_NAME = "Data Validation stage"
+    try:
+        logger.info(f"\n\n===================== Stage {STAGE_NAME} started =====================")
+        data_validation_pipeline = DataValidationTrainingPipeline()
+        data_validation_pipeline.main()
+        logger.info(f"\n\n ===================== Stage {STAGE_NAME} completed =====================\n\n")
+    except Exception as e:
+        logger.exception(f"An error occurred in the {STAGE_NAME}: {e}")
+        raise e    
