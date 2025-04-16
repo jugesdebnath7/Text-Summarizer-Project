@@ -18,11 +18,10 @@ from textSummarizer.pipeline.stage_01_data_ingestion import DataIngestionPipelin
 from textSummarizer.pipeline.stage_02_data_validation import DataValidationPipeline
 from textSummarizer.pipeline.stage_03_data_transformation import DataTransformationPipeline
 from textSummarizer.logging import logger
- 
 
 if __name__ == "__main__":
 
-    # Call the main function of the DataIngestionTrainingPipeline class to execute the stage
+    # Call the main function of the DataIngestionPipeline class to execute the stage
     STAGE_NAME = "Data Ingestion stage"
     try:
         logger.info(f"\n\n===================== Stage {STAGE_NAME} started =====================")
@@ -34,7 +33,7 @@ if __name__ == "__main__":
         raise e    
 
 
-    # Call the main function of the DataIngestionTrainingPipeline class to execute the stage
+    # Call the main function of the DataValidationPipeline class to execute the stage
     STAGE_NAME = "Data Validation stage"
     try:
         logger.info(f"\n\n===================== Stage {STAGE_NAME} started =====================")
@@ -45,7 +44,7 @@ if __name__ == "__main__":
         logger.exception(f"An error occurred in the {STAGE_NAME}: {e}")
         raise e    
     
-    # Call the main function of the DataTransformationTrainingPipeline class to execute the stage
+    # Call the main function of the DataTransformationPipeline class to execute the stage
     STAGE_NAME = "Data Transformation stage"
     try:
         logger.info(f"\n\n===================== Stage {STAGE_NAME} started =====================")
