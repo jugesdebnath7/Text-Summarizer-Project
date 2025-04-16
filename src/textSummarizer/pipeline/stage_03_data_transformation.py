@@ -1,9 +1,8 @@
 from textSummarizer.config.configuration import ConfigurationManager
-from textSummarizer.component.data_validation import DataValidation
+from textSummarizer.component.data_transformation import DataTransformation
 from textSummarizer.logging import logger
 
-
-class DataValidationPipeline:
+class DataTransformationPipeline:
     def __init__(self):
         pass
     
@@ -14,6 +13,6 @@ class DataValidationPipeline:
         """
         # Initialize the configuration manager and retrieve the data validation configuration
         config = ConfigurationManager()
-        data_validation_config = config.get_data_validation_config()
-        data_validation = DataValidation(config=data_validation_config)
-        data_validation.validate_all_files_exist()
+        data_transformation_config = config.get_data_transformation_config()
+        data_transformation = DataTransformation(config=data_transformation_config)
+        data_transformation.convert()

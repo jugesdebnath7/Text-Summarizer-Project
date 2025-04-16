@@ -14,8 +14,9 @@ Usage:
 import sys
 import os
 sys.path.append(os.path.abspath("src"))
-from textSummarizer.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
-from textSummarizer.pipeline.stage_02_data_validation import DataValidationTrainingPipeline
+from textSummarizer.pipeline.stage_01_data_ingestion import DataIngestionPipeline
+from textSummarizer.pipeline.stage_02_data_validation import DataValidationPipeline
+from textSummarizer.pipeline.stage_03_data_transformation import DataTransformationPipeline
 from textSummarizer.logging import logger
  
 
@@ -25,7 +26,7 @@ if __name__ == "__main__":
     STAGE_NAME = "Data Ingestion stage"
     try:
         logger.info(f"\n\n===================== Stage {STAGE_NAME} started =====================")
-        data_ingestion_pipeline = DataIngestionTrainingPipeline()
+        data_ingestion_pipeline = DataIngestionPipeline()
         data_ingestion_pipeline.main()
         logger.info(f"\n\n ===================== Stage {STAGE_NAME} completed =====================\n\n")
     except Exception as e:
@@ -37,9 +38,20 @@ if __name__ == "__main__":
     STAGE_NAME = "Data Validation stage"
     try:
         logger.info(f"\n\n===================== Stage {STAGE_NAME} started =====================")
-        data_validation_pipeline = DataValidationTrainingPipeline()
+        data_validation_pipeline = DataValidationPipeline()
         data_validation_pipeline.main()
         logger.info(f"\n\n ===================== Stage {STAGE_NAME} completed =====================\n\n")
     except Exception as e:
         logger.exception(f"An error occurred in the {STAGE_NAME}: {e}")
         raise e    
+    
+    # Call the main function of the DataTransformationTrainingPipeline class to execute the stage
+    STAGE_NAME = "Data Transformation stage"
+    try:
+        logger.info(f"\n\n===================== Stage {STAGE_NAME} started =====================")
+        data_transformation_pipeline = DataTransformationPipeline()
+        data_transformation_pipeline.main()
+        logger.info(f"\n\n ===================== Stage {STAGE_NAME} completed =====================\n\n")
+    except Exception as e:
+        logger.exception(f"An error occurred in the {STAGE_NAME}: {e}")
+        raise e 

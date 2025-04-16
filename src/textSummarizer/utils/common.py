@@ -43,30 +43,7 @@ def create_directories(path_to_directories: list, verbose: bool = True) -> None:
             logger.error(f"Error creating directory: {path} - {e}")
             raise e    
 
-# # @ensure_annotations
-# def create_directories(path_to_directories:list, verbose: bool = True):
-#     """
-#     Create list of directories      
 
-#     Args:
-#         path_to_directories (list): List of directories to create.
-#         verbose (bool): If True, print the directories being created.
-#         ignore_log (bool, optional): Ignore if multiple directories exist. Defaults to False.
-#     """           
-#     for path in path_to_directories:
-#         os.makedirs(path, exist_ok=True)
-#         if verbose:
-#             logger.info(f"Directory: {path} created successfully")
-#         # try:
-#         #     os.makedirs(path, exist_ok=True)
-#         #     if verbose:
-#         #         logger.info(f"Directory: {path} created successfully")
-#         # except FileExistsError:
-#         #     logger.warning(f"Directory: {path} already exists")
-#         # except Exception as e:
-#         #     logger.error(f"Error creating directory: {path} - {e}")
-#         #     raise e       
-        
 @ensure_annotations
 def get_size(path: str) -> str:
     """
