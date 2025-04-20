@@ -17,6 +17,7 @@ sys.path.append(os.path.abspath("src"))
 from textSummarizer.pipeline.stage_01_data_ingestion import DataIngestionPipeline
 from textSummarizer.pipeline.stage_02_data_validation import DataValidationPipeline
 from textSummarizer.pipeline.stage_03_data_transformation import DataTransformationPipeline
+from textSummarizer.pipeline.stage_04_model_trainer import ModelTrainerPipeline
 from textSummarizer.logging import logger
 
 if __name__ == "__main__":
@@ -54,3 +55,14 @@ if __name__ == "__main__":
     except Exception as e:
         logger.exception(f"An error occurred in the {STAGE_NAME}: {e}")
         raise e 
+    
+    # Call the main function of the ModelTrainerPipeline class to execute the stage
+    STAGE_NAME = "Model Trainer stage"
+    try:
+        logger.info(f"\n\n===================== Stage {STAGE_NAME} started =====================")
+        model_trainer_pipeline = ModelTrainerPipeline()
+        model_trainer_pipeline.main()
+        logger.info(f"\n\n ===================== Stage {STAGE_NAME} completed =====================\n\n")
+    except Exception as e:
+        logger.exception(f"An error occurred in the {STAGE_NAME}: {e}")
+        raise e
